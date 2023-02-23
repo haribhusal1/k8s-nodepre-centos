@@ -1,0 +1,25 @@
+helm install cilium cilium/cilium --version 1.12.5 \
+--namespace kube-system \
+--set operator.replicas=1 \
+--set nodeinit.enabled=true \
+--set nodeinit.restartPods=true \
+--set externalIPs.enabled=true \
+--set tunnel=disabled \
+--set bpf.masquerade=true \
+--set bpf.tproxy=true \
+--set bpf.hostRouting=true \
+--set autoDirectNodeRoutes=true \
+--set ipam.operator.clusterPoolIPv4PodCIDRList=10.125.0.0/16 \
+--set ipv4NativeRoutingCIDR=10.125.0.0/16 \
+--set cluster.name=cluster1 \
+--set cluster.id=21 \
+--set hubble.enabled=true \
+--set hubble.relay.enabled=true \
+--set hubble.ui.enabled=true \
+--set egressGateway.enabled=true \
+--set endpointRoutes.enabled=true \
+--set pullPolicy=IfNotPresent \
+--set kubeProxyReplacement=strict \
+--set hostServices.enabled=true \
+--set k8sServiceHost=10.10.10.164 \
+--set k8sServicePort=6443 
